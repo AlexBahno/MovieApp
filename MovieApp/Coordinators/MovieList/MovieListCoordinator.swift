@@ -32,8 +32,4 @@ final class MovieListCoordinator: ChildCoordinator {
     func coordinatorDidFinish() {
         parent?.childDidFinish(self)
     }
-    
-    func cleanUpZombieCoordinators() {
-        parent?.baseTabBarController?.cleanUpZombieCoordinators()
-    }
 }

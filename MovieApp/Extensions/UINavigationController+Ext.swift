@@ -31,7 +31,6 @@ public extension UINavigationController {
       }
     }
     
-    
     func customPopToRootViewController(direction: VCTransition = .fromTop, transitionType: CATransitionType = .push) {
         self.addTransition(transitionDirection: direction, transitionType: transitionType)
         self.popToRootViewController(animated: false)

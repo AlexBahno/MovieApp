@@ -72,3 +72,13 @@ var genres: [(String, Int)] = [
     ("Western", 3)
 ]
 
+enum Genres: Int {
+    case action = 28
+    
+    var title: String {
+        switch self {
+        case .action:
+            "Action"
+        }
+    }
+}

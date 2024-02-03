@@ -14,19 +14,19 @@ protocol ParentCoordinator: Coordinator {
     /**
      Adds the given coordinator to the list of children.
      - Parameters:
-        - child: A coordinator.
+     - child: A coordinator.
      */
     func addChild(_ child: Coordinator?)
     /**
      Tells the parent coordinator that given coordinator is done and should be removed from the list of children.
      - Parameters:
-        - child: A coordinator.
+     - child: A coordinator.
      */
     func childDidFinish(_ child: Coordinator?)
 }
 
 extension ParentCoordinator {
-    //MARK: - Coordinator Functions
+    // MARK: - Coordinator Functions
     /**
      Appends the coordinator to the children array.
      - Parameters:
@@ -44,11 +44,9 @@ extension ParentCoordinator {
      - child: The child coordinator to be removed from the list.
      */
     func childDidFinish(_ child: Coordinator?) {
-        for (index, coordinator) in childCoordinators.enumerated() {
-            if coordinator === child {
-                childCoordinators.remove(at: index)
-                break
-            }
+        for (index, coordinator) in childCoordinators.enumerated() where coordinator === child {
+            childCoordinators.remove(at: index)
+            break
         }
     }
 }

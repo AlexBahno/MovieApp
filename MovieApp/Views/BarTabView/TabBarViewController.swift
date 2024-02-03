@@ -15,7 +15,6 @@ class TabBarViewController: UITabBarController {
     private let favouriteCoordinator = FavouritesCoordinator(navigationController: UINavigationController())
     private (set) var initCoordinators = [Coordinator]()
 
-    
     init(coordinator: RootCoordinator) {
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
@@ -44,31 +43,4 @@ class TabBarViewController: UITabBarController {
         
         viewControllers = [movieListCoordinator.navigationController, favouriteCoordinator.navigationController]
     }
-    
-    func cleanUpZombieCoordinators() {
-        /// Since the `MerchCoordinator` could be initialized from only two places we can assume every other instance of it
-        /// existing inside the `childCoordinators` belongs to the `GreenViewController` and is safe to be removed.
-        
-//        if let currentCoordinators = coordinator?.childCoordinators {
-//            for item in currentCoordinators {
-//                let contains = initCoordinators.contains(where: {$0 === item})
-//                if contains == false {
-//                    /// Dismissing newly `MerchCoordinator` children coordinators
-//                    if let merchCoordinator = item as? MerchCoordinator {
-//                        merchCoordinator.dismissMerchScreens()
-//                        coordinator?.childDidFinish(merchCoordinator)
-//                    }
-//
-//                    /// Removing the `BlueCoordinator` which was added throught the `GreenViewController`
-//                    if let blueCoordinator = item as? BlueCoordinator, let viewController = blueCoordinator.viewControllerRef as? DisposableViewController {
-//                        viewController.cleanUp()
-//                        blueCoordinator.viewControllerRef?.navigationController?.popViewController(animated: false)
-//                        coordinator?.childDidFinish(blueCoordinator)
-//                    }
-//                }
-//            }
-//        }
-    }
-
-
 }

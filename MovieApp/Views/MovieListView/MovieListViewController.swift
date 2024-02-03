@@ -45,7 +45,6 @@ class MovieListViewController: UIViewController, Storyboardable {
                     manager.addNew(favourite: viewModel.dataSource!.results![indexPath.row])
                     let alertController = UIAlertController(title: "Movie Saved", message: nil, preferredStyle: .alert)
                     let action = UIAlertAction(title: "Ok", style: .default) { _ in
-                        
                     }
                     alertController.addAction(action)
                     self.present(alertController, animated: true)

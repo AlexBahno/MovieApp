@@ -10,14 +10,12 @@ import UIKit
 
 extension UIApplication {
     func topViewController() -> UIViewController? {
-        var topViewController: UIViewController? = nil
+        var topViewController: UIViewController?
         if #available(iOS 13, *) {
             for scene in connectedScenes {
                 if let windowScene = scene as? UIWindowScene {
-                    for window in windowScene.windows {
-                        if window.isKeyWindow {
-                            topViewController = window.rootViewController
-                        }
+                    for window in windowScene.windows where window.isKeyWindow {
+                        topViewController = window.rootViewController
                     }
                 }
             }

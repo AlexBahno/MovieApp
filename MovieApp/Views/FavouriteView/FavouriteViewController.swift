@@ -84,7 +84,7 @@ class FavouriteViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        super.viewWillAppear(animated)
         manager.fetchAllMovies()
         self.tableView.reloadData()
         if manager.movies.count == 0 {
@@ -93,5 +93,4 @@ class FavouriteViewController: UIViewController {
             noMovieLable.isHidden = true
         }
     }
-    
 }
