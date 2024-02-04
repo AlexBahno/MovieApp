@@ -43,6 +43,7 @@
 		D300187D2B6E87FA003B2089 /* SavedDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D300187C2B6E87FA003B2089 /* SavedDetailsViewController.swift */; };
 		D300187F2B6E88AA003B2089 /* SavedDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D300187E2B6E88AA003B2089 /* SavedDetailsCoordinator.swift */; };
 		D30018822B6E8CF1003B2089 /* SavedDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30018812B6E8CF1003B2089 /* SavedDetailsViewModel.swift */; };
+		D314FB262B6F915F00424DEB /* FavouriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D314FB252B6F915F00424DEB /* FavouriteViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +86,7 @@
 		D300187C2B6E87FA003B2089 /* SavedDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedDetailsViewController.swift; sourceTree = "<group>"; };
 		D300187E2B6E88AA003B2089 /* SavedDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedDetailsCoordinator.swift; sourceTree = "<group>"; };
 		D30018812B6E8CF1003B2089 /* SavedDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedDetailsViewModel.swift; sourceTree = "<group>"; };
+		D314FB252B6F915F00424DEB /* FavouriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteViewModel.swift; sourceTree = "<group>"; };
 		E4AC84050C8581C3037BA3DF /* Pods_MovieApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -221,6 +223,7 @@
 			children = (
 				D300178F2B6ABB37003B2089 /* FavouriteViewController.swift */,
 				D30018712B6E5E90003B2089 /* FavouriteViewController+TableView.swift */,
+				D314FB252B6F915F00424DEB /* FavouriteViewModel.swift */,
 			);
 			path = FavouriteView;
 			sourceTree = "<group>";
@@ -467,6 +470,7 @@
 				D300176C2B6AB21B003B2089 /* AppDelegate.swift in Sources */,
 				D30017EE2B6D237F003B2089 /* MovieDetailsViewModel.swift in Sources */,
 				D300179F2B6AC7AC003B2089 /* MovieListViewController+TableView.swift in Sources */,
+				D314FB262B6F915F00424DEB /* FavouriteViewModel.swift in Sources */,
 				D30017D72B6C4BAF003B2089 /* NetworkService.swift in Sources */,
 				D30018562B6E46FA003B2089 /* UiApplication+Ext.swift in Sources */,
 				D30017E52B6CFEBB003B2089 /* MovieCellViewModel.swift in Sources */,

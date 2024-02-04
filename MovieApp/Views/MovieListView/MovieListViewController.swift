@@ -18,11 +18,7 @@ class MovieListViewController: UIViewController, Storyboardable {
     
     // MARK: ViewModel
     var viewModel: MovieListViewModel = MovieListViewModel()
-    
-    private let manager = CoreManager.shared
-    
-    var cellDataSource: [MovieCellViewModel] = []
-    
+            
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,8 +37,7 @@ class MovieListViewController: UIViewController, Storyboardable {
         if sender.state == .began {
             let touchPoint = sender.location(in: tableView)
             if let indexPath = tableView.indexPathForRow(at: touchPoint) {
-                if !manager.movies.map({ Int($0.id) }).contains(cellDataSource[indexPath.row].id) {
-                    manager.addNew(favourite: viewModel.dataSource!.results![indexPath.row])
+                if viewModel.saveMovie(indexPath: indexPath) {
                     let alertController = UIAlertController(title: "Movie Saved", message: nil, preferredStyle: .alert)
                     let action = UIAlertAction(title: "Ok", style: .default) { _ in
                     }
@@ -74,10 +69,9 @@ class MovieListViewController: UIViewController, Storyboardable {
         }
         
         viewModel.cellDataSource.bind { [weak self] movies in
-            guard let self = self, let movies = movies else {
+            guard let self = self, movies != nil else {
                 return
             }
-            self.cellDataSource = movies
             self.reloadTableView()
         }
     }

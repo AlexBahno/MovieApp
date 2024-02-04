@@ -12,7 +12,7 @@ struct MovieResponse: Codable {
     let results: [Movie]?
 }
 
-// MARK: - Result
+// MARK: - Movie
 struct Movie: Codable {
     let backdropPath: String?
     let id: Int?

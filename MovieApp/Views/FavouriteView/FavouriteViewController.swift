@@ -9,8 +9,9 @@ import Foundation
 import UIKit
 
 class FavouriteViewController: UIViewController {
-    
-    let manager = CoreManager.shared
+        
+    // MARK: ViewModel
+    var viewModel: FavouriteViewModel
     
     // MARK: Coordinator
     var coordinator: FavouritesCoordinator?
@@ -34,6 +35,15 @@ class FavouriteViewController: UIViewController {
         return label
     }()
     
+    init(viewModel: FavouriteViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -50,11 +60,9 @@ class FavouriteViewController: UIViewController {
         if sender.state == .began {
             let touchPoint = sender.location(in: tableView)
             if let indexPath = tableView.indexPathForRow(at: touchPoint) {
-                manager.movies[indexPath.row].deleteMovie()
-                manager.fetchAllMovies()
+                viewModel.deleteMovie(indexPath: indexPath)
                 let alertController = UIAlertController(title: "Movie Deleted", message: nil, preferredStyle: .alert)
                 let action = UIAlertAction(title: "Ok", style: .default) { _ in
-                    
                 }
                 alertController.addAction(action)
                 self.present(alertController, animated: true)
@@ -85,9 +93,9 @@ class FavouriteViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        manager.fetchAllMovies()
+        viewModel.manager.fetchAllMovies()
         self.tableView.reloadData()
-        if manager.movies.count == 0 {
+        if viewModel.manager.movies.count == 0 {
             noMovieLable.isHidden = false
         } else {
             noMovieLable.isHidden = true

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SnapKit
 import Alamofire
 import AlamofireImage
 
@@ -71,28 +70,28 @@ class MovieViewCell: UITableViewCell {
         contentView.addSubview(releaseDate)
         contentView.addSubview(rating)
         
-        movieImage.snp.makeConstraints { make in
-            make.top.equalTo(contentView.snp.top).inset(5)
-            make.bottom.equalTo(contentView.snp.bottom).inset(5)
-            make.leading.equalTo(contentView.snp.leading).inset(15)
-            make.width.equalTo(100)
-        }
+        NSLayoutConstraint.activate([
+            movieImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
+            movieImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
+            movieImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
+            movieImage.widthAnchor.constraint(equalToConstant: 100)
+        ])
         
-        title.snp.makeConstraints { make in
-            make.top.equalTo(contentView.snp.top).inset(5)
-            make.leading.equalTo(movieImage.snp.trailing).inset(-10)
-            make.trailing.equalTo(contentView.snp.trailing).inset(10)
-        }
+        NSLayoutConstraint.activate([
+            title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
+            title.leadingAnchor.constraint(equalTo: movieImage.trailingAnchor, constant: 10),
+            title.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 10)
+        ])
         
-        releaseDate.snp.makeConstraints { make in
-            make.leading.equalTo(movieImage.snp.trailing).inset(-10)
-            make.bottom.equalTo(contentView.snp.bottom).inset(5)
-        }
+        NSLayoutConstraint.activate([
+            releaseDate.leadingAnchor.constraint(equalTo: movieImage.trailingAnchor, constant: 10),
+            releaseDate.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5)
+        ])
         
-        rating.snp.makeConstraints { make in
-            make.leading.equalTo(movieImage.snp.trailing).inset(-10)
-            make.bottom.equalTo(releaseDate.snp.top).inset(-5)
-        }
+        NSLayoutConstraint.activate([
+            rating.leadingAnchor.constraint(equalTo: movieImage.trailingAnchor, constant: 10),
+            rating.bottomAnchor.constraint(equalTo: releaseDate.topAnchor, constant: -5)
+        ])
     }
     
     func setupCell(viewModel: MovieCellViewModel) {

@@ -36,7 +36,9 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieViewCell.identifier, for: indexPath) as? MovieViewCell else {
             return UITableViewCell()
         }
-        let cellViewModel = cellDataSource[indexPath.row]
+        guard let cellViewModel = viewModel.cellDataSource.value?[indexPath.row] else {
+            return UITableViewCell()
+        }
         cell.selectionStyle = .none
         cell.setupCell(viewModel: cellViewModel)
         return cell
@@ -47,8 +49,8 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let movieId = cellDataSource[indexPath.row].id
-        guard let movie = viewModel.retrieveMovie(id: movieId) else {
+        guard let movieId = viewModel.cellDataSource.value?[indexPath.row].id,
+              let movie = viewModel.retrieveMovie(id: movieId) else {
             return
         }
         coordinator?.movieDetails(movie)

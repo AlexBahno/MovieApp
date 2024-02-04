@@ -10,14 +10,14 @@ import UIKit
 extension FavouriteViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        manager.movies.count
+        viewModel.manager.movies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieViewCell.identifier, for: indexPath) as? MovieViewCell else {
             return UITableViewCell()
         }
-        let favouriteMovie = manager.movies[indexPath.row]
+        let favouriteMovie = viewModel.manager.movies[indexPath.row]
         cell.selectionStyle = .none
         cell.setupCell(viewModel: MovieCellViewModel(movie: favouriteMovie))
         return cell
@@ -28,6 +28,6 @@ extension FavouriteViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        coordinator?.savedMovieDetails(manager.movies[indexPath.row])
+        coordinator?.savedMovieDetails(viewModel.manager.movies[indexPath.row])
     }
 }

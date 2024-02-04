@@ -12,6 +12,7 @@ final class MovieListViewModel {
     var isLoading: Observable<Bool> = Observable(false)
     var cellDataSource: Observable<[MovieCellViewModel]> = Observable([])
     var dataSource: MovieResponse?
+    private let manager = CoreManager.shared
     
     func numberOfRows(in section: Int) -> Int {
         dataSource?.results?.count ?? 0
@@ -43,5 +44,14 @@ final class MovieListViewModel {
             return nil
         }
         return movie
+    }
+    
+    func saveMovie(indexPath: IndexPath) -> Bool {
+        if let dataSource = dataSource,
+           !manager.movies.map({ Int($0.id) }).contains(dataSource.results![indexPath.row].id) {
+            manager.addNew(favourite: dataSource.results![indexPath.row])
+            return true
+        }
+        return false
     }
 }

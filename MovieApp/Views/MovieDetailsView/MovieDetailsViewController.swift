@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SnapKit
 import Alamofire
 import AlamofireImage
 
@@ -81,26 +80,28 @@ class MovieDetailsViewController: UIViewController {
         view.addSubview(movieDescription)
         view.addSubview(releaseDate)
         
-        movieImage.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(-15)
-            make.leading.trailing.equalToSuperview().inset(15)
-        }
+        NSLayoutConstraint.activate([
+            movieImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -15),
+            movieImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            movieImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15)
+        ])
         
-        movieTitle.snp.makeConstraints { make in
-            make.top.equalTo(movieImage.snp.bottom).inset(15)
-            make.centerX.equalToSuperview()
-            make.width.equalTo(view.snp.width)
-        }
+        NSLayoutConstraint.activate([
+            movieTitle.topAnchor.constraint(equalTo: movieImage.bottomAnchor, constant: -20),
+            movieTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            movieTitle.widthAnchor.constraint(equalTo: view.widthAnchor)
+        ])
         
-        movieDescription.snp.makeConstraints { make in
-            make.top.equalTo(movieTitle.snp.bottom).inset(-10)
-            make.leading.trailing.equalToSuperview().inset(20)
-        }
+        NSLayoutConstraint.activate([
+            movieDescription.topAnchor.constraint(equalTo: movieTitle.bottomAnchor, constant: 10),
+            movieDescription.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            movieDescription.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+        ])
         
-        releaseDate.snp.makeConstraints { make in
-            make.top.equalTo(movieDescription.snp.bottom).inset(-10)
-            make.leading.equalToSuperview().inset(20)
-        }
+        NSLayoutConstraint.activate([
+            releaseDate.topAnchor.constraint(equalTo: movieDescription.bottomAnchor, constant: 10),
+            releaseDate.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
+        ])
     }
     
     private func configView() {

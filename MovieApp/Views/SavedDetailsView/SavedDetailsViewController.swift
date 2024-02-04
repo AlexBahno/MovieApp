@@ -66,20 +66,23 @@ class SavedDetailsViewController: UIViewController {
         view.addSubview(releaseDateLabel)
         view.addSubview(genresLabel)
         
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(10)
-            make.leading.trailing.equalToSuperview().inset(15)
-        }
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15)
+        ])
         
-        releaseDateLabel.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(15)
-            make.top.equalTo(titleLabel.snp.bottom).inset(-10)
-        }
-        
-        genresLabel.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(15)
-            make.top.equalTo(releaseDateLabel.snp.bottom).inset(-10)
-        }
+        NSLayoutConstraint.activate([
+            releaseDateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            releaseDateLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+            releaseDateLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10)
+        ])
+
+        NSLayoutConstraint.activate([
+            genresLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            genresLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+            genresLabel.topAnchor.constraint(equalTo: releaseDateLabel.bottomAnchor, constant: 10)
+        ])
     }
     
     private func configView() {

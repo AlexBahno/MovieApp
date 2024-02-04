@@ -18,7 +18,8 @@ final class FavouritesCoordinator: ChildCoordinator {
     }
     
     func start(animated: Bool) {
-        let favouritesVC = FavouriteViewController()
+        let favouriteVM = FavouriteViewModel()
+        let favouritesVC = FavouriteViewController(viewModel: favouriteVM)
         viewControllerRef = favouritesVC
         favouritesVC.coordinator = self
         favouritesVC.tabBarItem = UITabBarItem(title: "Favourite", image: UIImage(systemName: "star.fill"), selectedImage: nil)
